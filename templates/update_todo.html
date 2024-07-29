@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+{% comment "" %}
+
+{% block body %}
+<div class="form-container">
+    <h2>Add Todo</h2>
+    <form action="/add_todo" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <input type="submit" value="Add Todo">
+    </form>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        font-family: 'Comic Sans MS', sans-serif;
+        background-color: #f5f5f5;
+        background-image: url('https://th.bing.com/th/id/OIG3.JqHDXhzcjN3RGKFEaxVi?pid=ImgGn');
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        box-shadow: 0 2px 18px rgba(0, 0, 0, 0.1);
+        text-shadow:0px 2px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand img {
+        width: 100px;
+    }
+
+    .navbar-nav {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar-nav .nav-link {
+        color: #5a5a5a;
+        margin-left: 30px;
+        text-decoration: none;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #f76c6c;
+    }
+
+    .form-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 700px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .form-container h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .form-container label {
+        display: block;
+        margin-bottom: 8px;
+        color: #666;
+        text-align: left;
+    }
+
+    .form-container input[type="text"],
+    .form-container textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .form-container input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .form-container input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    footer {
+        margin-top: auto;
+        padding: 15px 0;
+        background-color: rgba(255, 255, 255, 0.9);
+        width: 100%;
+        text-align: center;
+        font-size: 0.9em;
+    }
+</style>
+{% endblock %}
+{% endcomment %}
+
+{% block style %}
+<style>
+    body {
+        font-family: 'Comic Sans MS', sans-serif;
+        background-color: #f5f5f5;
+        background-image: url('https://th.bing.com/th/id/OIG3.dxQ.yOitWMtuffL3US52?pid=ImgGn');
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .navbar {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        box-shadow: 0 2px 18px rgba(0, 0, 0, 0.1);
+        text-shadow: 0px 2px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand img {
+        width: 100px;
+    }
+
+    .navbar-nav {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar-nav .nav-link {
+        color: #5a5a5a;
+        margin-left: 30px;
+        text-decoration: none;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #f76c6c;
+    }
+
+    .container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 40%;
+        height:90%;
+        max-width: 600px;
+        text-align: center;
+    }
+
+    .form-container h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .form-container label {
+        display: block;
+        margin-bottom: 8px;
+        color: #666;
+        text-align: left;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="date"],
+    .form-container textarea {
+        width: 100%;
+        
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .form-container input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .form-container input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    footer {
+        padding: 15px 0;
+        background-color: rgba(255, 255, 255, 0.9);
+        width: 100%;
+        text-align: center;
+        font-size: 0.9em;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <div class="form-container">
+        <h2>Updated Todo{{ todos.id }}</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="description">Task Name:</label>
+                <input type="text" name="task1" class="form-control" value="{{ todos.task }}"required>
+              
+            </div>
+            <div class="form-group">
+                <label for="created_at">Created At:</label>
+                <input type="date" name="created_at2" class="form-control" required>
+            </div>
+            <input type="submit" value="Add Todo" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
