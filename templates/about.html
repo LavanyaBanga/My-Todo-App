@@ -1,0 +1,75 @@
+{% extends 'base.html'%}
+{% block style%}
+    <style>
+       
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            background-image:url('https://th.bing.com/th/id/OIG4.jJ4v.9bhBKO5zwL8XRMa?pid=ImgGn');
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+            text-align: center;
+        }
+        #flowchart {
+            margin: 30px auto;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #9FBA9F;
+            margin-top: 20px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            color: #333;
+        }
+    </style>
+   
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+
+{% endblock %}
+{% block body%}
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+        <p>Welcome to our To-Do application! This application is designed to help you manage your tasks efficiently.</p>
+        <p>Here's how our task management works:</p>
+
+        <div id="flowchart">
+            <div class="mermaid">
+                graph TD;
+                    A[Start] --> B[Upload Task];
+                    B --> C[Delete Task];
+                    B --> D[Add Task];
+                    B --> E[Mark Complete];
+                    E --> F[End];
+                    C --> F;
+                    D --> F;
+            </div>
+        </div>
+
+        
+    </div>
+</body>
+{% endblock %}
+

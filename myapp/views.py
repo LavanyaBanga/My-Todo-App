@@ -82,4 +82,12 @@ def mark_complete(request,todo_id):
      
      
     return redirect("todo")
+# ================function for profile page==================================
+
+def profile(request):
+    return render(request,"upload_profile_pic.html")
+# ==================function for about page=================================
+def about(request):
+    return render(request,"about.html")
+
      
