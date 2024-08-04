@@ -1,11 +1,11 @@
 from inspect import Parameter
 from django.shortcuts import render,redirect
-from .models import Todo
-# ========================home funtion===================================
+from .models import Todo,Profile
+# =====================================home funtion=======================================================
 
 def home(request):
     return render(request,"home.html")
-#========================todo funtion===================================
+#===================================== todo funtion===============================================
 
 
 def todo(request):
@@ -23,7 +23,7 @@ def todo(request):
     }
     return render(request,"todo.html",Parameter)
 
-# ========================add_todo funtion===================================
+# ====================================add_todo funtion======================================================
 
 
 
@@ -40,7 +40,7 @@ def add_todo(request):
     return render(request,"add_todo.html")
 
 
-# ==============================delete===================================
+# ==================================delete===========================================================
 def delete_todo(request,todo_id):
     remove=Todo.objects.get(id=todo_id)
     remove.delete()
@@ -49,7 +49,7 @@ def delete_todo(request,todo_id):
 
 
 
-# ========================update funtion===================================
+# =================================update funtion===============================================================
 
 
 def update_todo(request,todo_id):
@@ -72,7 +72,7 @@ def update_todo(request,todo_id):
     return redirect("todo")
 
 
-# ========================complete funtion===================================
+# ===============================complete funtion===========================================================
 
 def mark_complete(request,todo_id):
     todo=Todo.objects.get(id=todo_id)
@@ -82,12 +82,28 @@ def mark_complete(request,todo_id):
      
      
     return redirect("todo")
-# ================function for profile page==================================
+# ==============================function for profile page=================================================================
 
 def profile(request):
+    if request.method=="POST":
+        profile_pic=request.FILES["upload_pic"]
+        new_profile=Profile(
+        title="demo title",
+        profile_pic=profile_pic
+        )
+        new_profile.save()
+        return redirect("todo")
     return render(request,"upload_profile_pic.html")
-# ==================function for about page=================================
+
+# =============================function for about page===========================================================
+
+
+
 def about(request):
     return render(request,"about.html")
+
+# ===================================register==============================================================
+
+
 
      

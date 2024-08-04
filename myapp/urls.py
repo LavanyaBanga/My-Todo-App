@@ -13,7 +13,8 @@ urlpatterns = [
     path('update_todo/<int:todo_id>',views.update_todo,name='update_todo'),
     path('mark_complete/<int:todo_id>',views.mark_complete,name='mark_complete'),
     path('upload_profile/',views.profile,name="upload_profile"),
-     path('about/',views.about,name="about")
+    path('about/',views.about,name="about"),
+   
    
 ]
 if settings.DEBUG:

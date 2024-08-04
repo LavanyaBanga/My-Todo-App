@@ -1,98 +1,125 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://th.bing.com/th/id/OIG3.ZRvoESC6C9FxzWynOgjF?pid=ImgGn');
+            background-color: #f7f8fa;
+            color: #333;
+            background-size: cover;
+            background-position: center;
+            font-family: 'Comic Sans MS', sans-serif;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            justify-content: center;
+        }
 
-{% block style %}
-<style>
-    body {
-        background-image: url('https://th.bing.com/th/id/OIG3.ZRvoESC6C9FxzWynOgjF?pid=ImgGn');
-        background-color: #f7f8fa;
-        color: #333;
-        background-size: cover;
-        background-position: center;
-        font-family: 'Comic Sans MS', sans-serif;
-        text-align: center;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        justify-content: center;
-    }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid #ddd;
+        }
 
-    .navbar {
-        background-color: rgba(255, 255, 255, 0.9);
-        border-bottom: 1px solid #ddd;
-    }
+        .navbar-brand img {
+            width: 100px; /* Adjust the size of your logo here */
+        }
 
-    .navbar-brand img {
-        width: 100px; /* Adjust the size of your logo here */
-    }
+        .navbar-nav {
+            margin-left: auto; /* Align nav links to the right */
+        }
 
-    .navbar-nav .nav-link {
-        color: #5a5a5a;
-    }
+        .navbar-nav .nav-link {
+            color: #5a5a5a;
+        }
 
-    .navbar-nav .nav-link:hover {
-        color: #f76c6c;
-    }
+        .navbar-nav .nav-link:hover {
+            color: #f76c6c;
+        }
 
-    .container {
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 15px;
-        padding: 40px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        max-width: 90%;
-        margin: auto;
-    }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            margin: auto;
+        }
 
-    h1 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-        color: #f76c6c;
-    }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #f76c6c;
+        }
 
-    p {
-        font-size: 1.2em;
-        margin-bottom: 30px;
-        color: #333;
-    }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #333;
+        }
 
-    .btn-custom {
-        background-color: #f76c6c;
-        border-color: #f76c6c;
-        color: white;
-        padding: 10px 20px;
-        font-size: 1.1em;
-        border-radius: 25px;
-        margin: 10px;
-        text-decoration: none;
-    }
+        .btn-custom {
+            background-color: #f76c6c;
+            border-color: #f76c6c;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            margin: 10px;
+            text-decoration: none;
+        }
 
-    .btn-custom:hover {
-        background-color: #ff9a8b;
-        border-color: #ff9a8b;
-    }
+        .btn-custom:hover {
+            background-color: #ff9a8b;
+            border-color: #ff9a8b;
+        }
 
-    footer {
-        margin-top: auto;
-        padding: 15px 0;
-        background-color: rgba(255, 255, 255, 0.9);
-        position: relative;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        font-size: 0.9em;
-    }
-</style>
-{% endblock %}
+        footer {
+            margin-top: auto;
+            padding: 15px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">ToDo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
 
-{% block body %}
+    <div class="container">
+        <h1>Welcome to ToDo App!</h1>
+        <p>Manage your tasks effortlessly and stay organized.</p>
+        <a href="{% url 'login' %}" class="btn btn-custom" role="button">Get started</a>
+    </div>
 
-<div class="container">
-    <h1>Welcome to ToDo App!</h1>
-    <p>Manage your tasks effortlessly and stay organized.</p>
-    <a href="{% url 'todo' %}" class="btn btn-custom" role="button">Get started</a>
-</div>
+    <footer>
+        <p>&copy; 2024 ToDo App. All rights reserved. 🌟</p>
+    </footer>
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-{% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

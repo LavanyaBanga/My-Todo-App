@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Comic Sans MS', sans-serif;
+            
+            
+            background: linear-gradient(to bottom, #f8c6d0, #ffffff);
+            background-size: cover;
+            margin: 0;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #333;
+        }
+        .login-form {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            margin: 60px auto;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            backdrop-filter: blur(8px);
+        }
+        .login-form h2 {
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-align: center;
+            color: #333;
+        }
+        .form-group label {
+            font-weight: 500;
+            color: #333;
+        }
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #333;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+        .form-control::placeholder {
+            color: #333;
+        }
+        .btn-primary {
+            background-color: #ff66b2;
+            border-color: #ff66b2;
+        }
+        .btn-primary:hover {
+            background-color: #cc3399;
+            border-color: #cc3399;
+        }
+        .btn-link {
+            color: #ff66b2;
+            font-size: 1em;
+            text-decoration: none;
+            background-color: transparent; /* Ensures no background by default */
+        }
+        
+        .btn-link:hover {
+            color: #d64d8c; /* Slightly darker pink for hover effect */
+            background-color: rgba(255, 255, 255, 0.2); /* Light background on hover for better visibility */
+        }
+        
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #ffffff;
+            color: #333;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">ToDo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'todo' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'upload_profile' %}">Upload Profile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="login-form">
+        <form method="post" action="{% url 'login' %}">
+         
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+               
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <p>
+                <a href="#" class="btn btn-link">Forgot Password?</a>
+            </p>
+            
+            <p>Don't have an account?
+                <a href="{% url 'register' %}" class="btn btn-link">Register now</a>
+            </p>
+            
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 ToDo App. All rights reserved. 🌟</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

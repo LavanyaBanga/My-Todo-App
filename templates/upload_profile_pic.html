@@ -3,7 +3,7 @@
 {% block style%}
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', sans-serif;
             background-image:url('https://th.bing.com/th/id/OIG1._Vlemnq_gJkjAOpb_SuA?w=1024&h=1024&rs=1&pid=ImgDetMain');
             background-color: #f4f4f4;
             margin: 0;
@@ -57,7 +57,8 @@
 
     <div class="container">
         <h2>Upload Your Profile</h2>
-        <form action="/upload-profile" method="post" enctype="multipart/form-data">
+        <form  method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -65,12 +66,12 @@
             <input type="email" id="email" name="email" required>
 
             <label for="profilePicture">Profile Picture:</label>
-            <input type="file" id="profilePicture" name="profilePicture" accept="image/*" required>
+            <input type="file" id="profilePicture" name="upload_pic" accept="image/*" required>
 
             <label for="bio">Bio:</label>
             <textarea id="bio" name="bio" rows="4" required></textarea>
 
-            <button type="submit">Upload Profile</button>
+            <button type="submit" class="btn btn-primary btn-block">Upload</button>
         </form>
     </div>
 {% endblock %}
